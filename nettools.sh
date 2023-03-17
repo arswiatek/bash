@@ -75,6 +75,10 @@ function speedtest_tool() {
     speedtest-cli
 }
 
+function filesize() {
+	read -p "Enter file path: " path
+    du -sh $path
+}
 # Define menu options
 menu_options=(
     "Ping"
@@ -92,6 +96,7 @@ menu_options=(
     "Nmap"
     "Wget"
     "Speedtest"
+	"File size"
     "Exit"
 )
 
@@ -124,7 +129,8 @@ function handle_input() {
         13) nmap_tool ;;
         14) wget_tool ;;
         15) speedtest_tool ;;
-        16) echo -e "${GREEN}Exiting...${RESET}" && exit ;;
+		16) filesize ;;
+        17) echo -e "${GREEN}Exiting...${RESET}" && exit ;;
         *) echo -e "${RED}Invalid option. Please try again.${RESET}" ;;
     esac
     read -p "Press [Enter] to continue..."
